@@ -7,13 +7,7 @@ with open(input_path, 'r', encoding='utf-8') as f:
 
 from openai import OpenAI
 from llm_inference import *
-# client = OpenAI(
-#     api_key="REMOVEDproj-Bq_ITFLGCofcWOMgYAvCNuApNlFitM5xFnftVjrMShZ-iWzT4uUC81f8MrlKEaFkxKBYHevoxLT3BlbkFJUDX1ivcjCCkdQvAssTF9zdB4GyiVfWoe7zMF5F37Q-3RutEsFh1oycmQDaypjlBKrZxHrHo8EA"
-# )
 
-# client = OpenAI(
-#     api_key="REMOVEDproj-bmA7_VLMa0F2_SpzaPNnY1z8rCUig53Rj0FE64TvGEkRKj3B3b_MoJaAjbvyN3hrqDgTNYUHPRT3BlbkFJqHdwiZZa50YKCrUN5C2V9XL4MsK_Sw636h2QevSYyi5nxHM0CkYUYMRblzu9w_3YfjqHB0xd0A"
-# )
 
 # def inference_gpt(prompt: str, model: str = "gpt-4.1-mini", max_retries: int = 10) -> str:
 #     for attempt in range(max_retries):
