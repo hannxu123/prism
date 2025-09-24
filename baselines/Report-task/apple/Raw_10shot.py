@@ -23,7 +23,7 @@ random.seed(args.seed)
 np.random.seed(args.seed)
 
 client = OpenAI(
-    api_key = 'REMOVEDproj-x-xeXFQ8c7DaXZX8PFjX5qk-70vvuA5JaQPDb768662UnxQCDoYS4bL6Pi6GOdFMgQj4HNpdwST3BlbkFJiL5U4r7bcAh1jSirjA8dAuzPJuKFy7ViOnNjDyY4PlqIZLtmfnQt7NifxM5jEBXLdTP1KDZpUA'
+    api_key = ''
 )
 pdf_path = "fruits/USAPPLE_OutlookReport_2024.pdf"
 
