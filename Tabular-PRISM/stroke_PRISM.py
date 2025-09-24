@@ -12,15 +12,7 @@ from utils_stroke import *
 from sklearn.metrics import brier_score_loss
 import sys
 sys.stdout = open("shap_stroke_sc_gpt41_third.txt", "w", encoding="utf-8")
-client = OpenAI(
-    api_key  = 'REMOVEDproj-bmA7_VLMa0F2_SpzaPNnY1z8rCUig53Rj0FE64TvGEkRKj3B3b_MoJaAjbvyN3hrqDgTNYUHPRT3BlbkFJqHdwiZZa50YKCrUN5C2V9XL4MsK_Sw636h2QevSYyi5nxHM0CkYUYMRblzu9w_3YfjqHB0xd0A'
-)
-# client = OpenAI(
-#     api_key="REMOVEDproj-Bq_ITFLGCofcWOMgYAvCNuApNlFitM5xFnftVjrMShZ-iWzT4uUC81f8MrlKEaFkxKBYHevoxLT3BlbkFJUDX1ivcjCCkdQvAssTF9zdB4GyiVfWoe7zMF5F37Q-3RutEsFh1oycmQDaypjlBKrZxHrHo8EA"
-# )
-# client = OpenAI(
-#     api_key="REMOVEDproj-STx9hg7mJdpuBc1Qa9J1xPEG5i-FDjZDxkGnoxY3CjU5AgqILm2IAxTGJDZlOkqsTrEVC5PfY-T3BlbkFJthpAtc5KFaAW6sx9z1CA-W00GA-Tbh7up0EMhN1reiq-TZsUikZTaJdKDRZKeO_UC7j_Hsni4A"
-# )
+
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 df = pd.read_csv('data_process/stroke_balanced_300.csv')
