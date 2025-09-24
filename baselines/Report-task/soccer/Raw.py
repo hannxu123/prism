@@ -15,9 +15,6 @@ print('###############', args)
 random.seed(args.seed)
 np.random.seed(args.seed)
 
-client = OpenAI(
-    api_key = 'REMOVEDproj-bmA7_VLMa0F2_SpzaPNnY1z8rCUig53Rj0FE64TvGEkRKj3B3b_MoJaAjbvyN3hrqDgTNYUHPRT3BlbkFJqHdwiZZa50YKCrUN5C2V9XL4MsK_Sw636h2QevSYyi5nxHM0CkYUYMRblzu9w_3YfjqHB0xd0A'
-)
 
 def extract_first_number(s):
     match = re.search(r"\d+(\.\d+)?", s)
