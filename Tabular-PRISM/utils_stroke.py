@@ -127,7 +127,6 @@ def process_df_loan(info_df):
 
 
 def preprocess_df_adult(info_df):
-    # workclass 映射（工作类别）
     workclass_map = {
         'Private': 'Private company',
         'Self-emp-not-inc': 'Self-employed (not incorporated)',
@@ -139,7 +138,6 @@ def preprocess_df_adult(info_df):
     }
     info_df['workclass'] = info_df['workclass'].replace(workclass_map)
 
-    # education 映射（教育程度）
     education_map = {
         'HS-grad': 'High school graduate',
         'Some-college': 'Some college but no degree',
@@ -157,7 +155,6 @@ def preprocess_df_adult(info_df):
     }
     info_df['education'] = info_df['education'].replace(education_map)
 
-    # marital.status 映射（婚姻状况）
     marital_map = {
         'Married-civ-spouse': 'Married (civilian spouse)',
         'Married-spouse-absent': 'Married (spouse absent)',
@@ -198,19 +195,17 @@ def preprocess_df_adult(info_df):
 
 def process_df_adult(info_df):
     defaults = {
-        # 数值型字段
         'age': 40,              # mean
-        'capital.gain': 0,      # 大部分人是0
-        'capital.loss': 0,      # 大部分人是0
+        'capital.gain': 0,      
+        'capital.loss': 0,      
         'hours.per.week': 40,   # mean
         
-        # 类别型字段（mode-based）
-        'workclass': 'Private company',                 # 最常见
-        'education': 'Some college but no degree',                 # 最常见
-        'marital.status': 'Never married', # 最常见
-        'occupation': 'Professional specialty',         # 最常见
-        'relationship': 'Husband',              # 最常见
-        'native.country': 'United-States'       # 压倒性多数
+        'workclass': 'Private company',                
+        'education': 'Some college but no degree',                 
+        'marital.status': 'Never married', 
+        'occupation': 'Professional specialty',         
+        'relationship': 'Husband',              
+        'native.country': 'United-States'       
     }
 
 
