@@ -63,14 +63,11 @@ def compute_P_est(fvals):
         val = fvals.get(f, None)
         key = (f, val)
         if key in param_indices:
-            # 如果匹配上，就用训练过的参数
             idx = param_indices[key]
             p_j = torch.sigmoid(theta[idx])
         else:
-            # 匹配不上就用 0.5
             p_j = torch.tensor(0.5, device=theta.device)
         ps.append(p_j)
-    # 把所有单因子概率乘起来
     ps = torch.stack(ps)
     prod_p  = torch.prod(ps)
     prod_1p = torch.prod(1 - ps)
@@ -78,15 +75,11 @@ def compute_P_est(fvals):
 
 
 # def compute_P_est(fvals):
-#     """
-#     计算 P(O|f) 时，如果某因子或取值找不到，则使用 p_j=0.5
-#     """
 #     p_list = []
 #     for f in factor_names:
 #         val = fvals.get(f, None)
 #         key = (f, val)
 #         if val is None or key not in param_indices:
-#             # 缺失或者 key 不存在，默认 p=0.5
 #             p_j = torch.tensor(0.5, device=theta.device)
 #         else:
 #             idx = param_indices[key]
@@ -115,12 +108,10 @@ def compute_P_trained():
         for f, v in s["fvals"].items():
             key = (f, v)
             if key not in param_indices:
-                # 跳过所有在 param_indices 中不存在的 (factor, value)
                 continue
             i = param_indices[key]
             sum_est[i] += P
             count[i]   += 1
-    # 对于 count=0 的参数，保持 sum/count = 0
     return sum_est / torch.where(count > 0, count, torch.ones_like(count))
 
 # --- 5. Train ---
