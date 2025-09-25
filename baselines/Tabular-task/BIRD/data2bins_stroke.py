@@ -1,16 +1,13 @@
 import pandas as pd
 import json
 
-# 输入输出文件路径
-input_file = "data_process/stroke_balanced_300.csv"     # 原始文件
-output_file = "code/bird/data_bird/stroke_balanced_300_binned.csv"  # 导出后的文件
-json_file = "code/bird/data_bird/factors_stroke.json"  # 类别统计文件
+input_file = "data_process/stroke_balanced_300.csv"    
+output_file = "code/bird/data_bird/stroke_balanced_300_binned.csv" 
+json_file = "code/bird/data_bird/factors_stroke.json" 
 
-# 读入数据
 df = pd.read_csv(input_file)
 
 # ---------------------------
-# 分箱规则定义
 # ---------------------------
 
 # 1. Age bins
@@ -36,19 +33,13 @@ df["bmi"] = pd.cut(df["bmi"], bins=bmi_bins, labels=bmi_labels, include_lowest=T
 df["hypertension"] = df["hypertension"].map({0: "No", 1: "Yes"})
 df["heart_disease"] = df["heart_disease"].map({0: "No", 1: "Yes"})
 
-# ---------------------------
-# 导出处理后的 CSV
-# ---------------------------
 df.to_csv(output_file, index=False, encoding="utf-8")
-print(f"已处理完成，输出文件: {output_file}")
+print(f" {output_file}")
 
-# ---------------------------
-# 生成变量类别 JSON
-# ---------------------------
 category_dict = {}
 
 for col in df.columns:
-    if col not in ["id", "stroke"]:  # 排除 id 和 stroke
+    if col not in ["id", "stroke"]: 
         unique_vals = sorted(df[col].dropna().unique().tolist(), key=lambda x: str(x))
         category_dict[col] = unique_vals
 
@@ -56,4 +47,4 @@ for col in df.columns:
 with open(json_file, "w", encoding="utf-8") as f:
     json.dump(category_dict, f, indent=2, ensure_ascii=False)
 
-print(f"类别信息已保存为 JSON: {json_file}")
+print(f" {json_file}")
