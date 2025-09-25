@@ -142,7 +142,6 @@ for i in range(0, 300): # 200, 300
             "numbers": numbers
         }
 
-    # 与原始脚本计算一致
     final_score = score
     final_prob = logit_to_prob(score + base_logit)
 
@@ -150,7 +149,6 @@ for i in range(0, 300): # 200, 300
     all_pred.append(round(final_prob,3))
     all_label.append(y.iloc[i])
 
-    # 新增：把当前 sample 的结果追加到 results_json，并写文件（不改变计算）
     results_json.append({
         "sample_id": i,
         "true_label": int(y.iloc[i]),
