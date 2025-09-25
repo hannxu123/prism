@@ -1,20 +1,16 @@
 import json
 import pandas as pd
 
-# 1. 读取 CPT
 with open('code/bird/data_bird/cpt_trained_adult_gemini.json', 'r', encoding='utf-8') as f:
     cpt = json.load(f)
 
-# 2. 读取 factors
 with open("code/bird/data_bird/factors_adult.json", "r", encoding="utf-8") as f:
     factors = json.load(f)
 
-# 3. 读取 test_bins.csv
 test_samples = pd.read_csv("code/bird/data_bird/adult_300_binned.csv")
 
 results = []
 for _, row in test_samples.iterrows():
-    # fvals: 提取出该样本的因子 -> 值的字典
     fvals = {factor: row[factor] for factor in factors if factor in row}
     
     prod_app = prod_rej = 1.0
@@ -50,6 +46,5 @@ for _, row in test_samples.iterrows():
         "label": int(row.get("income", "") == '>50K'),
     })
 
-# 4. 保存结果
 with open("code/bird/data_bird/prediction_adult_trained_gemini2.json", "w", encoding="utf-8") as f:
     json.dump(results, f, ensure_ascii=False, indent=2)
